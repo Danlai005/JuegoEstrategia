@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HexCell : MonoBehaviour //Representa cada hexágono inividual que aparece en el tablero
+public class HexCell : MonoBehaviour //Representa cada hexï¿½gono inividual que aparece en el tablero
 {
     public HexCoordinates Coordinates { get; private set; } //Guarda las coordenadas de la casilla
 
@@ -25,17 +25,20 @@ public class HexCell : MonoBehaviour //Representa cada hexágono inividual que ap
 
     private void OnMouseEnter()//cuadno el raton entra en la casilla
     {
+        if (TurnsManager.EstaEnTransicion) return;
         if (!isSelected) 
         {
             spriteRenderer.color = hoverColor;
         }
     }
-    private void OnMouseExit()//cuando el atón sale de la casilla
+    private void OnMouseExit()//cuando el atï¿½n sale de la casilla
     {
+        if (TurnsManager.EstaEnTransicion) return;
         UpdateVisual();
     }
-    private void OnMouseDown()//Detectar los clics del ratón sobre las celdas
+    private void OnMouseDown()//Detectar los clics del ratï¿½n sobre las celdas
     {
+        if (TurnsManager.EstaEnTransicion) return;
         if (grid != null)
         {
             grid.SelectCell(this);
